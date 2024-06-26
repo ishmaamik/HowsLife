@@ -33,6 +33,16 @@ const SideBar=({className, zIndex})=>{
             setCurrentDropdown(targetDropdown);
         }
     };
+
+    const changeBack=()=>
+    {
+        if(dropSize==="230px")
+        {
+            changedropSize("100px");
+            setCurrentDropdown(null); 
+        }
+    }
+    
     
     
     useOutsideClick({
@@ -75,7 +85,7 @@ const SideBar=({className, zIndex})=>{
                 <NavItem icon={FiHome} title="Dashboard" active={false} navSize="large" mr={36} onClick={()=>changeDrop("dashboard")}/>
       <NavItem icon={FiCalendar} title="Calendar" active={false} navSize="large" mr={36} onClick={()=>changeDrop("lotapata")} />
       <NavItem icon={FiSettings} title="Settings" active={false} navSize="large" mr={20} onClick={()=>changeDrop("shorishartel")}/>
-     <Button  leftIcon={<FiLogIn color="#787878"/>}  iconSpacing={"18px"} variant={"text"} fontSize={"17px"} outline={"none"} w={152} h={8} mt={"36.5px"} boxShadow="none" _focus={{ outline: "none", boxShadow: "none" }}>Login</Button>
+     <Button onClick={()=>changeBack()} leftIcon={<FiLogIn color="#787878"/>}  iconSpacing={"18px"} variant={"text"} fontSize={"17px"} outline={"none"} w={152} h={8} mt={"36.5px"} boxShadow="none" _focus={{ outline: "none", boxShadow: "none" }}>Login</Button>
         </Flex> 
 
         <Flex p={"0%"} flexDir={"row"} w={"100%"} alignItems={"flex-start"} mb={45} >
