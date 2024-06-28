@@ -42,7 +42,7 @@ const NavItem=({ icon, title, active, navSize, mr, onClick })=> { // Ensure onCl
           p={3}
           borderRadius={15}
           _hover={{ textDecor: 'none', backgroundColor: "#D1B3FF" }}
-          w={navSize === "large" && "100%"}
+          fontSize={"17px"}
         >
           <MenuButton
             w="100%"
@@ -71,9 +71,9 @@ const NavItem=({ icon, title, active, navSize, mr, onClick })=> { // Ensure onCl
           <SimpleGrid columns={5} spacing={3}>
             {features.map((feature, index) => (
               <Box key={index} maxW="sm" borderWidth="1px" borderRadius="lg" overflow="hidden" m="2">
-                <Icon as={feature.icon} w={10} h={10} p={2} color="green.500" />
+                <Icon as={feature.icon} w={10} h={10} p={2} color="#FFC0CB" />
                 <Text fontWeight="bold" p={2}>{feature.title}</Text>
-                <Text fontSize="sm" px={2} pb={2}>{feature.description}</Text>
+                <Text fontSize="md" px={2} pb={2}>{feature.description}</Text>
               </Box>
             ))}
           </SimpleGrid>

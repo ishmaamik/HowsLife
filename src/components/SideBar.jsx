@@ -2,7 +2,6 @@ import { Flex, Image, Box, Portal, Button} from "@chakra-ui/react";
 import { useState, useRef} from "react";
 import {FiHome, FiCalendar, FiSettings, FiLogIn } from "react-icons/fi"
 import NavItem from "./NavItem";
-import ExampleImage from "./silhouette.jpg";
 import { useOutsideClick } from "@chakra-ui/react";
 
 
@@ -65,7 +64,7 @@ const SideBar=({className, zIndex})=>{
     return(
         
         <>
-        <Flex position={"absolute"} zIndex={zIndex} ref={sidebarRef} className={className} boxShadow={"0 4px 12px rgba(0, 0, 0, 0.1)"} w="100%" h={dropSize} flexDir="row" justifyContent="space-between" maxW="100vw" transition="height 0.3s ease" backgroundColor="#DDA0DD">
+        <Flex position={"absolute"} zIndex={zIndex} ref={sidebarRef} className={className} boxShadow={"0 4px 12px rgba(0, 0, 0, 0.1)"} w="100%" h={dropSize} flexDir="row" justifyContent="space-between" maxW="100vw" transition="height 0.3s ease" backgroundColor="#FFC0CB">
         
          <Flex
         flex={1}
@@ -80,10 +79,10 @@ const SideBar=({className, zIndex})=>{
             >
          
                 
-                <NavItem flexGrow={1}  icon={FiHome } title="Features" mr={36} onClick={()=>changeDrop("features")}  />
-                <NavItem flexGrow={1} icon={FiCalendar} title="Calendar" mr={36} onClick={()=>changeDrop("calendar")}/>
-                <NavItem icon={FiHome} title="Dashboard" active={false} navSize="large" mr={36} onClick={()=>changeDrop("dashboard")}/>
-      <NavItem icon={FiCalendar} title="Calendar" active={false} navSize="large" mr={36} onClick={()=>changeDrop("lotapata")} />
+                <NavItem flexGrow={1}  icon={FiHome } title="Features" mr={32} onClick={()=>changeDrop("features")}  />
+                <NavItem flexGrow={1} icon={FiCalendar} title="Calendar" mr={32} onClick={()=>changeDrop("calendar")}/>
+                <NavItem icon={FiHome} title="Dashboard" active={false} navSize="large" mr={32} onClick={()=>changeDrop("dashboard")}/>
+      <NavItem icon={FiCalendar} title="Calendar" active={false} navSize="large" mr={32} onClick={()=>changeDrop("lotapata")} />
       <NavItem icon={FiSettings} title="Settings" active={false} navSize="large" mr={20} onClick={()=>changeDrop("shorishartel")}/>
      <Button onClick={()=>changeBack()} leftIcon={<FiLogIn color="#787878"/>}  iconSpacing={"18px"} variant={"text"} fontSize={"17px"} outline={"none"} w={152} h={8} mt={"36.5px"} boxShadow="none" _focus={{ outline: "none", boxShadow: "none" }}>Login</Button>
         </Flex> 
