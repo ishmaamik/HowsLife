@@ -16,12 +16,12 @@ const ChatSidebar=({className})=>
                   
                     <ChatModal>
                         <Flex>
-                        <Box minW={"300px"} mt={"-92px"} ml={"-40px"}>
+                        <Box minW={"100px"}  mt={"-92px"} ml={"-40px"} mr={-16} >
                             <Menu/>
 
                         </Box>
                         
-                        <Box bgColor={"#fafafa"} mt={"-92px"} borderLeft={"4px solid rgba(0, 0, 0, 0.1)"}>
+                        <Box zIndex={100} bgColor={"#fafafa"} mt={"-92px"} borderLeft={"4px solid rgba(0, 0, 0, 0.1)"}>
                             <EmptyChat/>
                         </Box>
                         </Flex>
