@@ -1,11 +1,10 @@
-import { Flex, Image, Box, Portal, Button} from "@chakra-ui/react";
+import { Flex, Button} from "@chakra-ui/react";
 import { useState, useRef} from "react";
 import {FiHome, FiCalendar, FiSettings, FiLogIn } from "react-icons/fi"
-import NavItem from "./NavItem";
 import { useOutsideClick } from "@chakra-ui/react";
 
 
-const SideBar=({className, zIndex})=>{
+const HomeSideBar=({className, zIndex})=>{
     const sidebarRef = useRef(null);
     const [dropSize, changedropSize]= useState("100px");
     const [isAnimating, setIsAnimating] = useState(false);
@@ -109,4 +108,4 @@ const SideBar=({className, zIndex})=>{
     )
 }
 //w="100vw" h="100vh"
-export default SideBar;
+export default HomeSideBar;

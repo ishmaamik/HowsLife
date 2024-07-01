@@ -8,13 +8,12 @@ import {
   MenuButton,
   MenuList,
   SimpleGrid,
-  Box,
-  Button
+  Box
 } from '@chakra-ui/react';
 import { FiMessageSquare, FiUsers, FiMail, FiSmile, FiBriefcase } from 'react-icons/fi';
-import { useState, useRef } from "react";
+import { useState} from "react";
 
-const NavItem=({ icon, title, active, navSize, mr, onClick })=> { // Ensure onClick is listed here
+const HomeNavItem=({ icon, title, active, navSize, mr, onClick })=> { // Ensure onClick is listed here
   const features = [
     { title: 'Message Privately', description: 'End-to-end encryption and privacy controls.', icon: FiMessageSquare },
     { title: 'Stay Connected', description: 'Message and call for free* around the world.', icon: FiMail },
@@ -84,4 +83,4 @@ const NavItem=({ icon, title, active, navSize, mr, onClick })=> { // Ensure onCl
     </Flex>
   );
 }
-export default NavItem;
+export default HomeNavItem;
