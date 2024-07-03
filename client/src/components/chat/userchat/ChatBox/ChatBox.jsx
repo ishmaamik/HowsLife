@@ -27,7 +27,7 @@ const ChatBox=()=>
         <Box>
         <ChatHeader person={person}/>
         <Box position={"relative"}>
-        <ChatBody/>
+       
         <Message person={person} conversation={conversation}/>
         </Box>
         </Box>

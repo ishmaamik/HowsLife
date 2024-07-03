@@ -14,7 +14,7 @@ export const newMessage=async(request, response)=>{
 }
 
 
-export const getMessages=async(id)=>{
+export const getMessages=async(request, response)=>{
     try{
         const messages= await Message.find({conversationId: request.params.id});
         response.status(200).json(messages);

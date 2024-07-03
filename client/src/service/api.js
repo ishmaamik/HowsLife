@@ -53,7 +53,7 @@ export const addMessage=async(data)=>{
 
 export const getMessage=async(id)=>{
     try{
-        let response= await axios.post(`${url}/message/get/${id}`);
+        let response= await axios.get(`${url}/message/get/${id}`);
         return response.data;
     }
     catch(error){
