@@ -14,11 +14,12 @@ export const newMessage=async(request, response)=>{
 }
 
 
-export const getMessage=async(id)=>{
+export const getMessages=async(id)=>{
     try{
-        
+        const messages= await Message.find({conversationId: request.params.id});
+        response.status(200).json(messages);
     }
     catch(error){
-
+        response.status(500).json(error.message);
     }
 }

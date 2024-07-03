@@ -50,3 +50,14 @@ export const addMessage=async(data)=>{
         console.log('Error while sending message', error.message);
     }
 }
+
+export const getMessage=async(id)=>{
+    try{
+        let response= await axios.post(`${url}/message/get/${id}`);
+        return response.data;
+    }
+    catch(error){
+        console.log('Error while getting messages', error);
+    }
+
+}
