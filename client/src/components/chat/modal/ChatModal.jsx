@@ -22,13 +22,13 @@ const ChatModal = ({children}) => {
       <Modal closeOnOverlayClick={false} isOpen={true} onClose={onClose}>
         
         <ModalContent   borderRadius={"none"} 
-       overflow={'hidden'}
+       overflow={"hidden"}
         maxW={"4000px"}
-         height="auto" 
+         height="92vh" 
         boxShadow={"0 4px 12px rgba(0, 0, 0, 0.4)"} 
         m={6}
         p={0}
-        
+        zIndex={100}
         >
           {/* <ModalHeader 
           // fontSize={25} 

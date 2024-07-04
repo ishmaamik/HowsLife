@@ -10,7 +10,9 @@ const Messenger=()=>
     const {account}= useContext(AccountContext);
 
     return(
-        <Box overflow={"hidden"} >
+        <Box 
+        overflow={"hidden"} 
+        >
         {account?
         <ChatSidebar className="sidebar" zIndex="3"/>
         :

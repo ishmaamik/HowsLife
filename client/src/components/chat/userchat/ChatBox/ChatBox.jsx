@@ -24,13 +24,17 @@ const ChatBox=()=>
     }, [person.sub]);    //for everytime a person is clicked
     return(
         <>
+        <Box pos={"relative"}>
         <Box>
         <ChatHeader person={person}/>
-        <Box position={"relative"}>
+        </Box >
+        <Box position={"relative"}  >
        
         <Message person={person} conversation={conversation}/>
         </Box>
         </Box>
+        
+        
         </>
     )
 }
