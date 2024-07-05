@@ -29,6 +29,11 @@ useEffect(() => {
     socket.current.on("getUsers", (users) => {
         setActiveUsers(users);
     })
+
+    return () => {
+        socket.current.emit('userDisconnected');
+        socket.current.off("getUsers");
+    };
     
 }, [account])
 return(
