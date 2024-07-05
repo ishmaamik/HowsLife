@@ -3,7 +3,7 @@ import { useContext, useEffect, useRef, useState } from "react";
 import { getMessage } from "../../../../service/api";
 import OneMessage from "./OneMessage";
 import { AccountContext } from "../../../../context/AccountProvider";
-
+import ExampleImage from './Shundoraa.jpg';
 
 
 const ChatBody=({conversation, person, newMessageFlag, messageEndRef})=>
@@ -55,7 +55,9 @@ useEffect(() => {
             overflowY={"auto"}
             //pos="absolute"
             height={"76vh"}
-            bgImage={url}
+            bgImage={ExampleImage}
+            backgroundSize="cover"
+            backgroundPosition="center"
             >
                 {
                     messages && messages.map(message => (
@@ -82,4 +84,12 @@ useEffect(() => {
 
 }
 
+
+const Shundor=()=>{
+    return(
+        <>
+        <Image src={ExampleImage}/>
+        </>
+    )
+}
 export default ChatBody;
