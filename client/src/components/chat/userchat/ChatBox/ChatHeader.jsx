@@ -10,7 +10,7 @@ const ChatHeader=({person})=>
     const {activeUsers}= useContext(AccountContext);
     return(
         <>
-        <Flex overflow={"hidden"} bgColor={"mistyrose"} maxW={"2000px"} width={"1050px"} mr={"-24px"}>
+        <Flex overflow={"hidden"} bgColor={"#FBCEB1"} maxW={"2000px"} width={"1050px"} mr={"-24px"}>
             <Box ml={4} mt={3} mb={2} >
             <Image borderRadius={"50%"} height={"50px"}  src={person.picture} />
             </Box>

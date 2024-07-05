@@ -22,7 +22,7 @@ const ChatSidebar = ({ className }) => {
                 h="25%"
                 flexDir="row"
                 justifyContent="space-between"
-                backgroundColor="mistyrose"
+                backgroundColor="#FBCEB1"
                 transition="height 0.3s ease"
             >
                 <ChatModal>
