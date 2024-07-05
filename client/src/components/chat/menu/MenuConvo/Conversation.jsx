@@ -9,7 +9,7 @@ import { useContext } from "react";
 const Conversation=({text})=>
 {
     const[users, setUsers]=useState([]);
-    const {account}= useContext(AccountContext);
+    const {account, setActiveUsers, socket}= useContext(AccountContext);
 
     useEffect(()=>
 {
@@ -22,6 +22,15 @@ const Conversation=({text})=>
     }
     fetchData()
 }, [text])
+
+useEffect(() => {
+    
+    socket.current.emit("addUser", account);
+    socket.current.on("getUsers", (users) => {
+        setActiveUsers(users);
+    })
+    
+}, [account])
 return(
     <>
     <Box pos={"absolute"} zIndex={100} mt={100} ml={20}>

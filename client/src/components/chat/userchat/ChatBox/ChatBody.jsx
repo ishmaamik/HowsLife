@@ -44,14 +44,14 @@ const ChatBody=({conversation, person, newMessageFlag, messageEndRef})=>
                         <Box  >
                         <OneMessage message={message}/>
                         </Box >
-                        
+                        <div ref={scrollRef}/>
                         </>
                     )
                 
                 )
                     
                 }
-                <div ref={scrollRef}/>
+                
             </Box>
             
             {/* <Box mt={0} zIndex={25} pos={"absolute"}>

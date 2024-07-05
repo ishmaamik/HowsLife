@@ -7,6 +7,7 @@ import { HamburgerIcon, SearchIcon } from "@chakra-ui/icons";
 
 const ChatHeader=({person})=>
 {
+    const {activeUsers}= useContext(AccountContext);
     return(
         <>
         <Flex overflow={"hidden"} bgColor={"mistyrose"} maxW={"2000px"} width={"1050px"} mr={"-24px"}>
@@ -22,7 +23,7 @@ const ChatHeader=({person})=>
                         {person.name}
                     </Text>
                 <Text whiteSpace="nowrap"
-                        textOverflow="ellipsis">offline status</Text>
+                        textOverflow="ellipsis">{activeUsers?.find(user=> user.sub===person.sub)? 'Online': 'Offline'}</Text>
             </Box>
 
             <Icon ml={750} mt={6} as={SearchIcon}/>
