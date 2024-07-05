@@ -4,9 +4,10 @@ export const AccountContext= createContext(null);
 
 const AccountProvider=({children})=>
 {
-    const [account, setAccount]= useState();
+    const [account, setAccount]= useState('');
     const [person, setPerson]= useState({});
     const [activeUsers, setActiveUsers] = useState([]);
+    const [about, setAbout]= useState('');
     const socket = useRef();
 
     useEffect(() => {
@@ -15,7 +16,7 @@ const AccountProvider=({children})=>
     return(
         <>
         <AccountContext.Provider value={{
-            account, setAccount, person, setPerson, activeUsers, setActiveUsers, socket
+            account, setAccount, person, setPerson, activeUsers, setActiveUsers, socket, about, setAbout
         }}>
             {children}
         </AccountContext.Provider>

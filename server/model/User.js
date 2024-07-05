@@ -56,6 +56,9 @@ const userSchema = new mongoose.Schema({
     sub: {
         type: String,
         required: true
+    },
+    about: {
+        type: String
     }
 })
 
