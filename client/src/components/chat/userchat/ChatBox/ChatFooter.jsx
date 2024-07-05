@@ -1,17 +1,35 @@
 import { Box, Flex, Input } from "@chakra-ui/react";
 import { FiPaperclip, FiSmile, FiMic } from "react-icons/fi";
+import { uploadFile } from "../../../../service/api";
+import { useEffect } from "react";
 
 
-const ChatFooter=({sendText, setMsg, msg, setFile})=>
+const ChatFooter=({sendText, setMsg, msg, setFile, file, setImage})=>
 {
     const onFileChange = (e) => {
         setMsg(e.target.files[0].name);
         setFile(e.target.files[0]);
     }
+
+    useEffect(() => {
+        const getFile = async () => {
+            if (file) {
+                const data = new FormData();
+                data.append("name", file.name);
+                data.append("file", file);
+
+                const response = await uploadFile(data);
+                setImage(response.data);
+                
+            }
+        }
+        getFile();
+        
+    }, [file])
     return(
         <>
         
-        <Box zIndex={25}  bgColor={"#FAF9F6"}mb={592} width={"1050px"} height={"100px"} mr={"-80px"}>
+        <Box zIndex={25}  bgColor={"#FAF9F6"}mb={592} width={"1050px"} height={"40px"} mr={"-80px"}>
             <Flex mt={3} ml={4}>
                 <Box mr={4} mt={1}>
             <FiSmile size={"20px"} />

@@ -10,7 +10,8 @@ const ChatBody=({conversation, person, newMessageFlag, messageEndRef})=>
     
 
     const url='https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png';
-    const [messages, setMessages] = useState([]);
+   const [messages, setMessages] = useState([]);
+   const scrollRef= useRef();
    
     useEffect(()=>{
         const getMessageDetails=async()=>{
@@ -22,12 +23,13 @@ const ChatBody=({conversation, person, newMessageFlag, messageEndRef})=>
         
         getMessageDetails();
         
-    }, [conversation._id, person._id, newMessageFlag]) //whenever person's id changes as well as convo
+    }, [conversation._id, newMessageFlag]) //whenever person's id changes as well as convo
 
 
-    // useEffect(() => {
-    //     messageEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-    // }, [messages]);
+     useEffect(() => {
+        scrollRef.current?.scrollIntoView({behavior: 'smooth', block:'nearest'})
+    }, [messages]);
+
         return(
             <>
             <Box zIndex={20} 
@@ -38,13 +40,18 @@ const ChatBody=({conversation, person, newMessageFlag, messageEndRef})=>
             >
                 {
                     messages && messages.map(message => (
+                        <>
+                        <Box  >
                         <OneMessage message={message}/>
+                        </Box >
+                        
+                        </>
                     )
                 
                 )
                     
                 }
-                <div ref={messageEndRef}/>
+                <div ref={scrollRef}/>
             </Box>
             
             {/* <Box mt={0} zIndex={25} pos={"absolute"}>

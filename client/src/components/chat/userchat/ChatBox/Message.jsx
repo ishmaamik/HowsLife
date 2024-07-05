@@ -3,7 +3,7 @@ import ChatFooter from "./ChatFooter"
 import { AccountContext } from "../../../../context/AccountProvider";
 import { addMessage, getMessage } from "../../../../service/api";
 import ChatBody from "./ChatBody";
-import { Box } from "@chakra-ui/react";
+import { Box, transition } from "@chakra-ui/react";
 
 
 
@@ -15,8 +15,9 @@ const Message = ({person, conversation}) => {
     const [file, setFile] = useState();
     const [image, setImage] = useState();
     const [newMessageFlag, setNewMessageFlag]= useState(false);
-    const messageEndRef= useRef();
+   
     
+
     const sendText=async(e)=>{
         const code= e.keyCode || e.which;
 
@@ -29,7 +30,7 @@ const Message = ({person, conversation}) => {
                     receiverId: person.sub,
                     conversationId: conversation._id,
                     type: 'text',
-                    text: value
+                    text: msg
                 };
             } else {
                 message = {
@@ -46,9 +47,7 @@ const Message = ({person, conversation}) => {
             setMsg('');
             setFile();
             setImage('');
-            setNewMessageFlag(prev=> !prev);
-            messageEndRef.current.scrollIntoView({ behavior: 'smooth', inline:'nearest', block:'end' });
-            
+            setNewMessageFlag(prev=> !prev);            
         }
     }
 
@@ -57,10 +56,10 @@ const Message = ({person, conversation}) => {
         <>
         <Box >
         <Box >
-        <ChatBody messageEndRef={messageEndRef} conversation={conversation} person={person} newMessageFlag={newMessageFlag}/>
+        <ChatBody conversation={conversation} person={person} newMessageFlag={newMessageFlag}/>
         </Box>
-        <Box zIndex={25} mb={100} opacity={"100%"} >
-        <ChatFooter sendText={sendText} setMsg={setMsg} msg={msg} setFile={setFile}/>
+        <Box zIndex={25} mb={100}  height={"300px"} opacity={"100%"} >
+        <ChatFooter file={file} sendText={sendText} setMsg={setMsg} msg={msg} setFile={setFile} setImage={setImage}/>
         </Box>
         </Box>
         </>
