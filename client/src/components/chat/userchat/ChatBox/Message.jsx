@@ -10,12 +10,13 @@ import { Box, transition } from "@chakra-ui/react";
 
 const Message = ({person, conversation}) => {
 
-    const {account}= useContext(AccountContext);
+    const {account, socket}= useContext(AccountContext);
     const [msg, setMsg]= useState('');
     const [file, setFile] = useState();
     const [image, setImage] = useState();
     const [newMessageFlag, setNewMessageFlag]= useState(false);
    
+    
     
 
     const sendText=async(e)=>{
@@ -41,6 +42,7 @@ const Message = ({person, conversation}) => {
                     text: image
                 };
             }
+            socket.current.emit('sendMessage', message);
             console.log(message);
             await addMessage(message);
 
