@@ -1,8 +1,9 @@
-import { Flex, Button} from "@chakra-ui/react";
+import { Flex, Button, Image} from "@chakra-ui/react";
 import { useState, useRef, useContext} from "react";
 import {FiHome, FiCalendar, FiSettings, FiLogIn } from "react-icons/fi"
 import { useOutsideClick } from "@chakra-ui/react";
 import { AccountContext } from "../../context/AccountProvider";
+import ExampleImage from "./howslife.png";
 import HomeNavItem from "./HomeNavItem";
 
 
@@ -25,12 +26,12 @@ const HomeSideBar=({className, zIndex})=>{
             changedropSize("100px"); // First, close the current dropdown
             setTimeout(() => {
                 // Immediately open the new dropdown
-                changedropSize("230px");
+                changedropSize("100px");
                 setCurrentDropdown(targetDropdown);
             }, 10); // Small delay to allow the DOM to update
         } else {
             // No dropdown is open, or the open dropdown is being closed
-            changedropSize("230px");
+            changedropSize("100px");
             setCurrentDropdown(targetDropdown);
         }
     };
@@ -87,9 +88,10 @@ const HomeSideBar=({className, zIndex})=>{
                 
             >
          
-                
-                <HomeNavItem flexGrow={1}  icon={FiHome } title="Features" mr={32} onClick={()=>{changeDrop("features") }}  />
-                <Button onClick={()=>{changeBack(), LogIn()}} leftIcon={<FiLogIn color="#787878"/>}  iconSpacing={"18px"} variant={"text"} fontSize={"17px"} outline={"none"} w={152} h={8} mt={"36.5px"} boxShadow="none" _focus={{ outline: "none", boxShadow: "none" }}>Login</Button>
+         <Image  height={"150px"} mt={1} mr={200} ml={20} src={ExampleImage}/>
+                <HomeNavItem flexGrow={1}  icon={FiHome } title="Features" mr={20} onClick={()=>{changeDrop("features") }}  />
+                <Button mr={40} onClick={()=>{changeBack(), LogIn()}} leftIcon={<FiLogIn color="#787878"/>}  iconSpacing={"18px"} variant={"text"} fontSize={"17px"} outline={"none"} w={152} h={8} mt={"38px"} boxShadow="none" _focus={{ outline: "none", boxShadow: "none" }}>Login</Button>
+
         </Flex> 
 
         <Flex p={"0%"} flexDir={"row"} w={"100%"} alignItems={"flex-start"} mb={45} >

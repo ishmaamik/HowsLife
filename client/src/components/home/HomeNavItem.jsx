@@ -16,10 +16,10 @@ import { useState} from "react";
 const HomeNavItem=({ icon, title, active, navSize, mr, onClick })=> { // Ensure onClick is listed here
   const features = [
     { title: 'Message Privately', description: 'End-to-end encryption and privacy controls.', icon: FiMessageSquare },
-    { title: 'Stay Connected', description: 'Message and call for free* around the world.', icon: FiMail },
-    { title: 'Build Community', description: 'Group conversations made simple.', icon: FiUsers },
-    { title: 'Express Yourself', description: 'Say it with stickers, voice, GIFs and more.', icon: FiSmile },
-    { title: 'WhatsApp Business', description: 'Reach your customers from anywhere.', icon: FiBriefcase }
+    { title: 'Stay Connected', description: 'Send texts for free around the world.', icon: FiMail },
+    // { title: 'Build Community', description: 'Group conversations made simple.', icon: FiUsers },
+    { title: 'Express Yourself', description: 'Say it with pictures, files and more.', icon: FiSmile },
+    { title: 'HowsLife Business', description: 'Reach your customers from anywhere.', icon: FiBriefcase }
   ];
 
   const [menuOpen, setMenuOpen] = useState(false);
@@ -66,8 +66,10 @@ const HomeNavItem=({ icon, title, active, navSize, mr, onClick })=> { // Ensure 
           boxShadow="xl"
           minW="100%"
           maxW="100vw"
+          mt={"23.55px"}
+          ml={12}
         >
-          <SimpleGrid columns={5} spacing={3}>
+          <SimpleGrid columns={4} spacing={2} width={'fit-content'}>
             {features.map((feature, index) => (
               <Box key={index} maxW="sm" borderWidth="1px" borderRadius="lg" overflow="hidden" m="2">
                 <Icon as={feature.icon} w={10} h={10} p={2} color="#FFC0CB" />

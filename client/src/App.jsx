@@ -2,7 +2,7 @@ import { Box, Flex, Image } from "@chakra-ui/react";
 import { useContext, useState } from "react";
 import './App.css';  // Ensure this contains the correct path to your CSS file
 import ExampleImage from './components/home/natural.png'
-import ExampleImage2 from './components/home/sky.png'
+import ExampleImage2 from './components/home/sky2.png'
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import AccountProvider, { AccountContext } from "./context/AccountProvider";
 import Messenger from "./Messenger";

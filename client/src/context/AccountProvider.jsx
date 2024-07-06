@@ -4,7 +4,7 @@ export const AccountContext= createContext(null);
 
 const AccountProvider=({children})=>
 {
-    const [account, setAccount]= useState({});
+    const [account, setAccount]= useState(null);
     const [person, setPerson]= useState({});
     const [activeUsers, setActiveUsers] = useState([]);
     const [about, setAbout]= useState('');
@@ -16,11 +16,12 @@ const AccountProvider=({children})=>
     }, [])
 
     useEffect(() => {
-        if (account.about !== undefined) {
+        if (account && account.about !== undefined) {
             setAbout(account.about);
+        } else {
+            setAbout('');
         }
     }, [account]);
-
     return(
         <>
         <AccountContext.Provider value={{

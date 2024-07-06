@@ -37,8 +37,8 @@ const ChatHeader=({person})=>
                         textOverflow="ellipsis">{activeUsers?.find(user=> user.sub===person.sub)? 'Online': 'Offline'}</Text>
             </Box>
 
-            <Icon ml={750} mt={6} as={SearchIcon}/>
-            <Icon ml={8} mt={6} as={HamburgerIcon}/>
+           
+            <Icon onClick={openDraw} cursor={"pointer"} ml={780} mt={6} as={HamburgerIcon}/>
         </Flex>
 
         <ProfileDrawer open={openDrawer} onClose={handleClose} user={person} which={which} />

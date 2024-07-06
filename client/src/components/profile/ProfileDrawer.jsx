@@ -1,4 +1,6 @@
 import { ArrowBackIcon } from '@chakra-ui/icons';
+
+import './profile.css';
 import {
     Drawer,
     DrawerBody,
@@ -17,9 +19,15 @@ import React, { useContext, useState, useEffect } from 'react';
 import { AccountContext } from '../../context/AccountProvider';
 import { uploadAbout, getUserBySub } from '../../service/api';
 
+
+
+
+
 const ProfileDrawer = ({ open, onClose, user, which }) => {
     const { setAccount, setAbout } = useContext(AccountContext);
     const [tempAbout, setTempAbout] = useState('');
+    const drawerClass = which === 'left' ? "drawer-left" : "drawer-right";
+    
 
     useEffect(() => {
         if (user && user.sub) {
@@ -59,9 +67,15 @@ const ProfileDrawer = ({ open, onClose, user, which }) => {
             onClose={onClose}
         >
             <DrawerOverlay bg="transparent" />
-            <DrawerContent
-                ml={6} maxW={"470px"} h={"721.5px"} mt={6}
-            >
+            <DrawerContent 
+            sx={{
+                width: which === 'left' ? '470px' : '420px',
+                maxWidth: which === 'left' ? '470px' : '420px',
+                height: '713.5px',
+                marginTop: '24px',
+                marginLeft: which === 'left' ? '24px' : '0',
+                marginRight: which === 'right' ? '24px' : '0',
+            }}>
                 <Flex overflow={'hidden'} backgroundColor={"mistyrose"} h={"131px"}>
                     <Button variant="link" onClick={onClose} _focus={{ boxShadow: 'none', outline: 'none' }}>
                         <ArrowBackIcon />
@@ -85,7 +99,7 @@ const ProfileDrawer = ({ open, onClose, user, which }) => {
                         <Box ml={4} mb={1} mt={4}>
                             <Text fontSize="lg" mb={1}>About</Text>
                         </Box>
-                        {user?.about ? (
+                        {user.about ? (
                             <Box ml={4}>
                                 <Text ml={4} mt={2}>{user.about}</Text>
                             </Box>
