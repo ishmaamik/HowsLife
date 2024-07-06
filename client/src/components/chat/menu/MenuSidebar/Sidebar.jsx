@@ -8,11 +8,13 @@ import SideNavItem from './SideNavItem';
 import { MoonIcon } from '@chakra-ui/icons';
 import { AccountContext } from '../../../../context/AccountProvider';
 import ProfileDrawer from '../../../profile/ProfileDrawer';
+import { FiLogOut } from 'react-icons/fi';
 
 export default function Sidebar() {
     const [navSize, changeNavSize] = useState("small");
-    const { account } = useContext(AccountContext);
+    const { account, setLogin, setAccount, person } = useContext(AccountContext);
     const [openDrawer, setOpenDrawer] = useState(false);
+    const which = 'left';
 
     const openDraw = () => {
         setOpenDrawer(true);
@@ -20,6 +22,11 @@ export default function Sidebar() {
 
     const handleClose = () => {
         setOpenDrawer(false);
+    };
+
+    const LogOut = () => {
+        setAccount(null);
+        setLogin('0');
     };
 
     return (
@@ -38,8 +45,9 @@ export default function Sidebar() {
                 w="100%"
                 alignItems={navSize === "small" ? "center" : "flex-start"}
                 as="nav"
+                onClick={LogOut}
             >
-                <SideNavItem navSize={navSize} icon={MoonIcon} title="Calendar" />
+                <SideNavItem navSize={navSize} icon={FiLogOut} title="Calendar" />
             </Flex>
 
             <Flex
@@ -51,11 +59,11 @@ export default function Sidebar() {
             >
                 <Flex mt={1} align="center">
                     <Button variant={"link"} _focus={{ outline: "none", boxShadow: "none" }} onClick={openDraw}>
-                        <Avatar size="sm" src={account.picture} />
+                        <Avatar size="sm" src={account?.picture} />
                     </Button>
                 </Flex>
             </Flex>
-            <ProfileDrawer open={openDrawer} onClose={handleClose} />
+            <ProfileDrawer open={openDrawer} onClose={handleClose} user={account} which={which} />
         </Flex>
     );
 }

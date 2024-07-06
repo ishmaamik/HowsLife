@@ -18,13 +18,17 @@ import { addUser } from '../../service/api';
 
 const LoginModal = () => {
   const {onClose } = useDisclosure();
-
+  const {setAccount ,setLogin, login}= useContext(AccountContext);
     const onLoginSuccess= async(res)=>
     {
+        
         const decoed= jwtDecode(res.credential);
         console.log(decoed);
+        setLogin('2');
         setAccount(decoed);
         await addUser(decoed);
+        
+        
     }
 
     const onLoginError=(res)=>
@@ -32,7 +36,7 @@ const LoginModal = () => {
         console.log('Failed authentication', res)
     }
 
-    const {setAccount}= useContext(AccountContext); //curly braces for useContext, normal braces for create Context, square bracket for useState
+     //curly braces for useContext, normal braces for create Context, square bracket for useState
   return (
     <>
       

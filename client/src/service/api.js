@@ -66,6 +66,23 @@ export const uploadFile = async (data) => {
     try {
         return await axios.post(`${url}/file/upload`, data);
     } catch (error) {
-        console.log('Error while calling newConversations API ', error);
+        console.log('Error while calling upload File API ', error);
+    }
+}
+
+export const uploadAbout = async (data) => {
+    try {
+        return await axios.post(`${url}/user/about`, data);
+    } catch (error) {
+        console.log('Error while calling upload about API', error);
+    }
+};
+
+export const getUserBySub = async (sub) => {
+    try {
+        let response = await axios.get(`${url}/user/${sub}`);
+        return response.data;
+    } catch (error) {
+        console.log('Error while getting user by sub', error.message);
     }
 }

@@ -1,13 +1,16 @@
 import { Flex, Button} from "@chakra-ui/react";
-import { useState, useRef} from "react";
+import { useState, useRef, useContext} from "react";
 import {FiHome, FiCalendar, FiSettings, FiLogIn } from "react-icons/fi"
 import { useOutsideClick } from "@chakra-ui/react";
+import { AccountContext } from "../../context/AccountProvider";
+import HomeNavItem from "./HomeNavItem";
 
 
 const HomeSideBar=({className, zIndex})=>{
     const sidebarRef = useRef(null);
     const [dropSize, changedropSize]= useState("100px");
     const [isAnimating, setIsAnimating] = useState(false);
+    const {login, setLogin}=useContext(AccountContext)
 
     const [currentDropdown, setCurrentDropdown] = useState(null);
 
@@ -37,10 +40,17 @@ const HomeSideBar=({className, zIndex})=>{
         if(dropSize==="230px")
         {
             changedropSize("100px");
-            setCurrentDropdown(null); 
+            setCurrentDropdown(null);
         }
     }
     
+    const LogIn=()=>
+    {
+        console.log(login);
+            setLogin('1');
+            console.log(login);
+            console.log(login);
+    }
     
     
     useOutsideClick({
@@ -78,12 +88,8 @@ const HomeSideBar=({className, zIndex})=>{
             >
          
                 
-                <NavItem flexGrow={1}  icon={FiHome } title="Features" mr={32} onClick={()=>changeDrop("features")}  />
-                <NavItem flexGrow={1} icon={FiCalendar} title="Calendar" mr={32} onClick={()=>changeDrop("calendar")}/>
-                <NavItem icon={FiHome} title="Dashboard" active={false} navSize="large" mr={32} onClick={()=>changeDrop("dashboard")}/>
-      <NavItem icon={FiCalendar} title="Calendar" active={false} navSize="large" mr={32} onClick={()=>changeDrop("lotapata")} />
-      <NavItem icon={FiSettings} title="Settings" active={false} navSize="large" mr={20} onClick={()=>changeDrop("shorishartel")}/>
-     <Button onClick={()=>changeBack()} leftIcon={<FiLogIn color="#787878"/>}  iconSpacing={"18px"} variant={"text"} fontSize={"17px"} outline={"none"} w={152} h={8} mt={"36.5px"} boxShadow="none" _focus={{ outline: "none", boxShadow: "none" }}>Login</Button>
+                <HomeNavItem flexGrow={1}  icon={FiHome } title="Features" mr={32} onClick={()=>{changeDrop("features") }}  />
+                <Button onClick={()=>{changeBack(), LogIn()}} leftIcon={<FiLogIn color="#787878"/>}  iconSpacing={"18px"} variant={"text"} fontSize={"17px"} outline={"none"} w={152} h={8} mt={"36.5px"} boxShadow="none" _focus={{ outline: "none", boxShadow: "none" }}>Login</Button>
         </Flex> 
 
         <Flex p={"0%"} flexDir={"row"} w={"100%"} alignItems={"flex-start"} mb={45} >

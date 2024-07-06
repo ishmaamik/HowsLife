@@ -4,19 +4,27 @@ export const AccountContext= createContext(null);
 
 const AccountProvider=({children})=>
 {
-    const [account, setAccount]= useState('');
+    const [account, setAccount]= useState({});
     const [person, setPerson]= useState({});
     const [activeUsers, setActiveUsers] = useState([]);
     const [about, setAbout]= useState('');
     const socket = useRef();
+    const [login, setLogin]= useState('0');
 
     useEffect(() => {
         socket.current = io('ws://localhost:9000');
     }, [])
+
+    useEffect(() => {
+        if (account.about !== undefined) {
+            setAbout(account.about);
+        }
+    }, [account]);
+
     return(
         <>
         <AccountContext.Provider value={{
-            account, setAccount, person, setPerson, activeUsers, setActiveUsers, socket, about, setAbout
+            account, setAccount, person, setPerson, activeUsers, setActiveUsers, socket, about, setAbout, login, setLogin
         }}>
             {children}
         </AccountContext.Provider>

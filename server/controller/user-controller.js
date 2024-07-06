@@ -26,3 +26,29 @@ export const getUser = async (request, response) => {
         response.status(500).json(error);
     }
 }
+
+export const updateUserAbout = async (request, response) => {
+    try {
+        const { sub, about } = request.body;
+        const user = await User.findOneAndUpdate({ sub }, { about }, { new: true });
+        if (!user) {
+            return response.status(404).json('User not found');
+        }
+        response.status(200).json(user);
+    } catch (error) {
+        response.status(500).json(error);
+    }
+};
+
+
+export const getUserBySub = async (request, response) => {
+    try {
+        const user = await User.findOne({ sub: request.params.sub });
+        if (!user) {
+            return response.status(404).json('User not found');
+        }
+        response.status(200).json(user);
+    } catch (error) {
+        response.status(500).json(error);
+    }
+};
